@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mzhu.mapper.UserMapper">
+    <insert id="addUser">
+        insert into study.user_test(username,address,age,password,gender)
+        VALUES (#{username},#{address},#{age},#{password},#{gender});
+    </insert>
+
+    <!--    <insert id="add" useGeneratedKeys="true" keyProperty="id">-->
+<!--        insert into mybatis.tb_brand(brand_name, company_name, ordered, description, status)-->
+<!--        VALUES (#{brandName},#{companyName},#{ordered},#{description},#{status});-->
+<!--    </insert>-->
+
+
+    <select id="selectAll" resultType="com.mzhu.pojo.User">
+        select * from study.user_test
+    </select>
+    <select id="selectByUsername" resultType="com.mzhu.pojo.User">
+        select * from study.user_test where username = #{username};
+    </select>
+
+
+
+    <update id="updatePassword">
+        UPDATE study.user_test
+        <set> password = #{password}
+        </set>
+        Where username = #{username};
+    </update>
+</mapper>
